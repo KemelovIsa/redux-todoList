@@ -1,0 +1,36 @@
+.completed {
+	width: 600px;
+	height: 600px;
+	text-decoration: line-through;
+	color: aqua;
+	border-radius: 50px;
+	font-family: Arial, sans-serif;
+	background: linear-gradient(85deg, rgb(0, 0, 0), #041c63, #c3c634, #e6e3e3);
+	background-size: 400% 400%;
+	animation: gradientAnimation 5s infinite;
+	font-family: "Arial", sans-serif;
+	background-color: #f8f9fa;
+}
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	25% {
+		background-position: 25% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	75% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+img {
+	width: 200px;
+	height: 200px;
+	border-radius: 35px;
+	margin: 30px;
+}
