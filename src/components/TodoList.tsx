@@ -32,7 +32,6 @@ const TodoList: FC = () => {
       dispatch(editTodo({ id: editId, ...editedTodo }));
       setEditId(null);
 
-      // Reset edit fields
       setEditName("");
       setEditAge(0);
       setEditImg("");
@@ -52,7 +51,6 @@ const TodoList: FC = () => {
     } else {
       dispatch(addTodo(todoItem));
 
-      // Reset add fields
       setName("");
       setAge(0);
       setImg("");
