@@ -21,6 +21,24 @@ const TodoList: FC = () => {
   const todo = useAppSelector((state) => state.todoReducer.data);
   const dispatch = useDispatch();
 
+  const saveEdit = () => {
+    const editedTodo = {
+      name: editName,
+      age: editAge,
+      img: editImg,
+    };
+
+    if (editId !== null) {
+      dispatch(editTodo({ id: editId, ...editedTodo }));
+      setEditId(null);
+
+      // Reset edit fields
+      setEditName("");
+      setEditAge(0);
+      setEditImg("");
+    }
+  };
+
   const addTodoItem = () => {
     const todoItem = {
       name,
@@ -30,18 +48,15 @@ const TodoList: FC = () => {
     };
 
     if (editId !== null) {
-      dispatch(editTodo({ id: editId, ...todoItem }));
-      setEditId(null);
+      saveEdit();
     } else {
-      dispatch(addTodo(todoItem));      
-    }
+      dispatch(addTodo(todoItem));
 
-    setName("");
-    setAge(0);
-    setImg("");
-    setEditName("");
-    setEditAge(0);
-    setEditImg("");
+      // Reset add fields
+      setName("");
+      setAge(0);
+      setImg("");
+    }
   };
 
   const removeTodoItem = (id: number) => {
@@ -129,7 +144,7 @@ const TodoList: FC = () => {
               onChange={(e) => setEditAge(Math.max(0, +e.target.value))}
               placeholder="Edit Task age"
             />
-            <button onClick={addTodoItem}>Save Edit</button>
+            <button onClick={saveEdit}>Save Edit</button>
             <button onClick={() => setEditId(null)}>Cancel</button>
           </div>
         )}
